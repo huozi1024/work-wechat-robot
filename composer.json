@@ -15,5 +15,10 @@
 	],
 	"keywords" : [
 		"work wechat robot monolog"
-	]
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Huozi\\WorkWechat\\" : "src"
+		}
+	}
 }
