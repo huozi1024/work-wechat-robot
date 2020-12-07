@@ -1,0 +1,19 @@
+{
+	"name" : "work-wechat-robot/work-wechat-robot",
+	"require-dev" : {
+		"monolog/monolog" : "^1.22 || ^2.0"
+	},
+	"description" : "企业微信机器人sdk",
+	"type" : "library",
+	"homepage" : "https://github.com/huozi1024/work-wechat-robot",
+	"license" : "MIT",
+	"authors" : [{
+			"homepage" : "https://github.com/huozi1024?tab=repositories",
+			"name" : "huozi",
+			"email" : "lio990527@163.com"
+		}
+	],
+	"keywords" : [
+		"work wechat robot monolog"
+	]
+}
