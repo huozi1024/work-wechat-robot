@@ -1,5 +1,5 @@
 {
-	"name" : "work-wechat-robot/work-wechat-robot",
+	"name" : "huo-zi/work-wechat-robot",
 	"require-dev" : {
 		"monolog/monolog" : "^1.22 || ^2.0"
 	},
