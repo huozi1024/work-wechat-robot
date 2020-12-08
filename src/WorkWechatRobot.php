@@ -46,7 +46,7 @@ class WorkWechatRobot
         return $this->message([
             'msgtype' => 'markdown',
             'markdown' => [
-                'content' => content
+                'content' => $content
             ]
         ]);
     }
@@ -61,7 +61,7 @@ class WorkWechatRobot
         ];
 
         return $this->message([
-            'msgtype' => 'msgtype',
+            'msgtype' => 'news',
             'news' => [
                 'articles' => [
                     $article
