@@ -9,9 +9,7 @@ class RobotHandler extends \Monolog\Handler\AbstractProcessingHandler
 
     private $robot;
 
-    private $msgType;
-
-    public function __construct($robotKey, $msgType = 'text', $level = \Monolog\Logger::ALERT, $bubble = true)
+    public function __construct($robotKey, $level = \Monolog\Logger::ALERT, $bubble = true)
     {
         parent::__construct($level, $bubble);
         $this->robot = new WorkWechatRobot($robotKey);
