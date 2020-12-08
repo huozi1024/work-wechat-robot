@@ -36,7 +36,7 @@ class RobotHandler extends \Monolog\Handler\AbstractProcessingHandler
     protected function textMsg($robot, array $record)
     {
         $content = $record['channel'] . '.' . $record['level_name'] . PHP_EOL . $record['message'] . PHP_EOL . json_encode($record['context'], JSON_UNESCAPED_UNICODE);
-        if ($record['extra']['url']) {
+        if (isset($record['extra']['url'])) {
             $content .= PHP_EOL . "from: {$record['extra']['url']}";
         }
         $robot->text($content);
@@ -53,7 +53,7 @@ class RobotHandler extends \Monolog\Handler\AbstractProcessingHandler
         $content = $record['channel'] . '.' . $record['level_name'] . PHP_EOL;
         $content .= ">message:`{$record['message']}`" . PHP_EOL;
         $content .= ">context:`{$record['context']}`" . PHP_EOL;
-        if ($record['extra']['url']) {
+        if (isset($record['extra']['url'])) {
             $content .= ">url:`{$record['extra']['url']}`";
         }
         $robot->markdown($content);
