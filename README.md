@@ -5,13 +5,11 @@
 ### 0.安装
 >composer require huo-zi/work-wechat-robot
 ### 1.使用
-> $robot = new WorkWechatRobot();
-* 文本消息
-> $robot->text($content);
-* markdown消息
-> $robot->markdown($content);
-* 图文消息
-> $robot->news($title, $url, $desc, $picurl);
+> <pre>$robot = new WorkWechatRobot();
+> $robot->text($content); // 文本消息
+> $robot->markdown($content); //markdown消息
+> $robot->news($title, $url, $desc, $picurl); //图文消息
+> </pre>
 ### 2.作为Monolog的通道使用
 #### 2.1 配置通道
 * laravel框架
