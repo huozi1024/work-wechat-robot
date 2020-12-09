@@ -5,7 +5,7 @@
 ### 0.安装
 >composer require huo-zi/work-wechat-robot
 ### 1.使用
-> <pre>$robot = new WorkWechatRobot();
+> <pre>$robot = new WorkWechatRobot($robotKey);
 > $robot->text($content); // 文本消息
 > $robot->markdown($content); //markdown消息
 > $robot->news($title, $url, $desc, $picurl); //图文消息
