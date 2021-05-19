@@ -7,8 +7,10 @@
 ### 1.使用
 > <pre>$robot = new WorkWechatRobot($robotKey);
 > $robot->text($content); // 文本消息
-> $robot->markdown($content); //markdown消息
-> $robot->news($title, $url, $desc, $picurl); //图文消息
+> $robot->markdown($content); // markdown消息
+> $robot->image($filename); // 图片消息 支持本地图片和网络图片
+> $robot->news($title, $url, $desc, $picurl); // 图文消息
+> $robot->file($filename); // 发送上传文件
 > </pre>
 ### 2.作为Monolog的通道使用
 #### 2.1 配置通道
