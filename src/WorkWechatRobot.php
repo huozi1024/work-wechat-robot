@@ -4,13 +4,17 @@ namespace Huozi\WorkWechat;
 class WorkWechatRobot
 {
 
-    private $robotUrl = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/';
+    /**
+     * @var WorkWechatClient
+     */
+    private $client;
 
     private $robotKey;
 
     public function __construct($key)
     {
         $this->robotKey = $key;
+        $this->client = new WorkWechatClient();
     }
 
     public function setRobotKey($key)
@@ -81,56 +85,37 @@ class WorkWechatRobot
         ]);
     }
 
-    public function file($mediaId)
+    public function file($file)
     {
+        $response = $this->upload($file);
+        if (!($result = json_decode($response)) && $result->errcode <> '0') {
+            return $response;
+        }
         return $this->message([
             'msgtype' => 'file',
             'file' => [
-                'media_id' => $mediaId
+                'media_id' => $result->media_id
             ]
         ]);
     }
 
-    private function message($message)
+    public function message($message)
     {
-        return $this->send('send', json_encode($message), [
-            'Content-Type: application/json'
+        return $this->client->request('cgi-bin/webhook/send?key=' . $this->robotKey,'POST', [
+            'json' => $message
         ]);
     }
 
-    private function upload($file)
+    public function upload($file)
     {
-        return $this->send('upload_media', [
-            'media' => $file
-        ], [
-            'Content-Type: multipart/form-data'
+        return $this->client->request('cgi-bin/webhook/upload_media?type=file&key=' . $this->robotKey,'POST', [
+            'multipart' => [
+                [
+                    'name' => 'media',
+                    'contents' => fopen($file, 'r'),
+                    'file_name' => basename($file)
+                ]
+            ]
         ]);
-    }
-
-    private function send($type, $data, $headers)
-    {
-        $url = $this->robotUrl . $type . '?key=' . $this->robotKey . ($type == 'upload_media' ? '&type=file' : '');
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_FAILONERROR, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HEADER, true);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-
-        $result = curl_exec($curl);
-        $res_code = intval(curl_getinfo($curl, CURLINFO_HTTP_CODE));
-        $header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
-        if ($result === false || $res_code !== 200) {
-            $message = sprintf('curl error: %s, errno: %d, response_code: %d', curl_error($curl), curl_errno($curl), $res_code);
-            curl_close($curl);
-            return $message; // ;
-        }
-        curl_close($curl);
-        return substr($result, $header_size);
     }
 }
