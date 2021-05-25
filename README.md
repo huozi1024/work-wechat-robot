@@ -5,6 +5,7 @@
 ### 0.安装
 >composer require huo-zi/work-wechat-robot
 ### 1.使用
+#### 1.1 直接使用
 > <pre>$robot = new WorkWechatRobot($robotKey);
 > $robot->text($content); // 文本消息
 > $robot->markdown($content); // markdown消息
@@ -12,6 +13,14 @@
 > $robot->news($title, $url, $desc, $picurl); // 图文消息
 > $robot->file($filename); // 发送上传文件
 > </pre>
+
+#### 1.2 v2.1.0之后支持创建消息对象发送消息：
+> <pre>
+> $messsage = new Text();     // new Markdwon(); new Image()...
+> $messsage->content('文本消息');
+> $messsage->send($robotKey); // 或使用 $robot->message($messsage);
+> </pre>
+
 ### 2.作为Monolog的通道使用
 #### 2.1 配置通道
 * laravel框架
@@ -28,7 +37,7 @@
 详见[laravel高度自定义Monolog通道](https://learnku.com/docs/laravel/8.x/logging/9376#advanced-monolog-channel-customization)
 * 其他框架
 > <pre>$logger = new \Monolog\Logger($name);
-> $logger->pushHandler(new RobotHandler($robotKey));
+> <b>$logger->pushHandler(new RobotHandler($robotKey));</b>
 ></pre>
 #### 2.2 日志格式化
 提供了`TextFormatter`和`MarkdownFormatter`格式化原始日志，输出方便阅读的内容
@@ -45,11 +54,11 @@
 `TextFormatter`和`MarkdownFormatter`都提供了默认的格式化结构，如果需要自定义可以：
 > <pre>    'formatter' => \Huozi\WorkWechat\Monolog\Formatter\TextFormatter::class,
 >     'formatter_with' => [
->         'messageFormat' => '{level_name}:{message} \n {extra.file}:{extra.line}'
+>         <b>'messageFormat' => '{level_name}:{message} \n {extra.file}:{extra.line}'</b>
 >     ]
 > </pre>
 * 其他框架
 > <pre>$messageFormat = '{level_name}:{message} \n {extra.file}:{extra.line}';
-> $formatter = new TextFormatter($messageFormat);
-> $logger->pushHandler((new RobotHandler($robotKey))->setFormatter($formatter));
+> <b>$formatter = new TextFormatter($messageFormat);</b>
+> $logger->pushHandler((new RobotHandler($robotKey))<b>->setFormatter($formatter))</b>;
 > </pre>
