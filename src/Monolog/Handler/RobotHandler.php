@@ -15,7 +15,7 @@ class RobotHandler extends \Monolog\Handler\AbstractProcessingHandler
         $this->robot = new WorkWechatRobot($robotKey);
     }
 
-    protected function write(array $record)
+    protected function write(array $record): void
     {
         $formatter = $this->getFormatter();
         if ($formatter instanceof MarkdownFormatter) {
