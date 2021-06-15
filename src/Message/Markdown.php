@@ -6,7 +6,7 @@ class Markdown extends Text
 {
     public function __construct($content = '')
     {
-        parent::content($content);
+        parent::content(addslashes($content));
         $this->type = 'markdown';
     }
 
