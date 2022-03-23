@@ -15,6 +15,9 @@ class RobotHandler extends \Monolog\Handler\AbstractProcessingHandler
         $this->robot = new WorkWechatRobot($robotKey);
     }
 
+    /**
+     * @inherits
+     */
     protected function write(array $record): void
     {
         $formatter = $this->getFormatter();
@@ -26,9 +29,10 @@ class RobotHandler extends \Monolog\Handler\AbstractProcessingHandler
     }
 
     /**
-     *
-     * @param WorkWechatRobot $robot
+     * 文本消息
+     * 
      * @param array $record
+     * @return void
      */
     protected function textMsg(array $record)
     {
@@ -39,9 +43,10 @@ class RobotHandler extends \Monolog\Handler\AbstractProcessingHandler
     }
 
     /**
+     * markdown消息
      *
-     * @param WorkWechatRobot $robot
      * @param array $record
+     * @return void
      */
     protected function markdownMsg(array $record)
     {
