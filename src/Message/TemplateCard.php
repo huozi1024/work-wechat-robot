@@ -217,5 +217,4 @@ class TemplateCard extends Message
         $this->jump_list = $list;
         return $this;
     }
-
 }

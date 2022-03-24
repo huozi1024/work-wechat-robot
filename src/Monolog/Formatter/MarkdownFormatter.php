@@ -1,8 +1,6 @@
 <?php
 namespace Huozi\WorkWechat\Monolog\Formatter;
 
-use Huozi\WorkWechat\WorkWechatRobot;
-
 class MarkdownFormatter extends TextFormatter
 {
 
@@ -10,6 +8,5 @@ class MarkdownFormatter extends TextFormatter
 {channel}.{level_name}
 >message:`{message}`
 >context:`{context}`
->url:`{extra.url}`
 FORMAT;
 }

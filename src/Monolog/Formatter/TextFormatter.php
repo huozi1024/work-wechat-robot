@@ -1,13 +1,11 @@
 <?php
-namespace Huozi\WorkWechat\Monolog\Formatter;
 
-use Huozi\WorkWechat\WorkWechatRobot;
-use Monolog\Formatter\NormalizerFormatter;
+namespace Huozi\WorkWechat\Monolog\Formatter;
 
 class TextFormatter extends \Monolog\Formatter\NormalizerFormatter
 {
 
-    protected $format = "{channel}.{level_name}\n{message}\n{context}\n{extra.url}";
+    protected $format = "{channel}.{level_name}\n{message}\n{context}";
 
     public function __construct($messageFormat = null, $dateFormat = null)
     {
@@ -23,7 +21,7 @@ class TextFormatter extends \Monolog\Formatter\NormalizerFormatter
      */
     public function format(array $record)
     {
-        $format = preg_replace_callback('/\{([\w\.]+)\}/', function($match) use ($record) {
+        $format = preg_replace_callback('/\{([\w\.]+)\}/', function ($match) use ($record) {
             $replase = static::arrayGet($record, $match[1], '');
             $replase = $match[1] == 'datetime' ? $replase->format($this->dateFormat) : $replase;
             return (is_object($replase) || is_array($replase)) ? json_encode($replase, JSON_UNESCAPED_UNICODE) : $replase;

@@ -9,5 +9,4 @@ class Markdown extends Text
         parent::content(addslashes($content));
         $this->type = 'markdown';
     }
-
 }

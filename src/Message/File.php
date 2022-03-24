@@ -11,11 +11,6 @@ class File extends Message
         $this->media($mediaId);
     }
 
-    public function file($filename)
-    {
-        
-    }
-
     public function media($mediaId)
     {
         $this->media_id = $mediaId;

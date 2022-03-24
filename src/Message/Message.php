@@ -32,7 +32,7 @@ abstract class Message
     {
         return $this->mesage;
     }
-    
+
     public function toArray()
     {
         return [
