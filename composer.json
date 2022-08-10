@@ -23,7 +23,7 @@
 	},
 	"autoload" : {
 		"files": [
-			"scr/helpers.php"
+			"src/helpers.php"
 		],
 		"psr-4" : {
 			"Huozi\\WorkWechat\\" : "src"
