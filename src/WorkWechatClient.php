@@ -10,6 +10,9 @@ class WorkWechatClient
      */
     protected $baseUri = 'https://qyapi.weixin.qq.com';
 
+    /**
+     *  @var \GuzzleHttp\Client
+     */
     protected $client;
 
     public function __construct()
@@ -19,12 +22,23 @@ class WorkWechatClient
         ]);
     }
 
+    /**
+     * Send request
+     *
+     * @param string    $uri     URI object or string.
+     * @param string    $method  HTTP method.
+     * @param array     $options Request options to apply.
+     * 
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function request($uri, $method = 'GET', $options = [])
     {
-        $response = $this->client->request($method, $uri, $options);
-        return $response->getBody();
+        return $this->client->request($method, $uri, $options);
     }
 
+    /**
+     * @return \GuzzleHttp\Client
+     */
     public function getClient()
     {
         return $this->client;

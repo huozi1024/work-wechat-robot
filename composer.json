@@ -20,7 +20,13 @@
 	"keywords" : [
 		"work wechat robot monolog"
 	],
+	"scripts": {
+		"test": "vendor/bin/phpunit"
+	},
 	"autoload" : {
+		"files": [
+			"scr/helpers.php"
+		],
 		"psr-4" : {
 			"Huozi\\WorkWechat\\" : "src"
 		}

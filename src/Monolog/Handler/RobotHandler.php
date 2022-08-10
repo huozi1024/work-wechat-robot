@@ -7,8 +7,16 @@ use Huozi\WorkWechat\Monolog\Formatter\MarkdownFormatter;
 class RobotHandler extends \Monolog\Handler\AbstractProcessingHandler
 {
 
+    /**
+     * @var WorkWechatRobot
+     */
     private $robot;
 
+    /**
+     * @param string $robotKey
+     * @param int|string $level
+     * @param boolean $bubble
+     */
     public function __construct($robotKey, $level = \Monolog\Logger::ALERT, $bubble = true)
     {
         parent::__construct($level, $bubble);
