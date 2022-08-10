@@ -110,7 +110,7 @@ class WorkWechatRobot
     public function file($file)
     {
         $response = $this->upload($file);
-        if (($result = \json_decode($response->getBody())) && $result->errcode <> '0') {
+        if (($result = \json_decode($response->getBody())) && $result->errcode == 0) {
             return $this->message(new File($result->media_id));
         }
         return $response;
