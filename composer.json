@@ -18,7 +18,13 @@
                 "email": "lio990527@163.com"
             }
 	],
+	"scripts": {
+		"test": "vendor/bin/phpunit"
+	},
 	"autoload" : {
+		"files": [
+			"scr/helpers.php"
+		],
 		"psr-4" : {
 			"Huozi\\WorkWechat\\" : "src"
 		}
