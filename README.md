@@ -62,3 +62,7 @@
 > <b>$formatter = new TextFormatter($messageFormat);</b>
 > $logger->pushHandler((new RobotHandler($robotKey))<b>->setFormatter($formatter))</b>;
 > </pre>
+
+License
+------------
+Licensed under [The MIT License (MIT)](LICENSE).

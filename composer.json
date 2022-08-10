@@ -1,5 +1,10 @@
 {
 	"name" : "huo-zi/work-wechat-robot",
+	"description" : "企业微信机器人sdk",
+	"type" : "library",
+	"keywords": ["wxwork", "robot", "monolog", "monolog-handler"],
+	"homepage" : "https://github.com/huozi1024/work-wechat-robot",
+	"license" : "MIT",
 	"require" : {
 		"monolog/monolog" : "^1.22 || ^2.0",
 		"guzzlehttp/guzzle": "^6.2 || ^7.0"
@@ -7,18 +12,11 @@
 	"require-dev": {
 		"phpunit/phpunit": "^8.0"
 	},
-	"description" : "企业微信机器人sdk",
-	"type" : "library",
-	"homepage" : "https://github.com/huozi1024/work-wechat-robot",
-	"license" : "MIT",
-	"authors" : [{
-			"homepage" : "https://github.com/huozi1024?tab=repositories",
-			"name" : "huozi",
-			"email" : "lio990527@163.com"
-		}
-	],
-	"keywords" : [
-		"work wechat robot monolog"
+	"authors": [
+            {
+                "name": "huozi1024",
+                "email": "lio990527@163.com"
+            }
 	],
 	"scripts": {
 		"test": "vendor/bin/phpunit"
