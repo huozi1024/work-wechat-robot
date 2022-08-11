@@ -6,6 +6,11 @@ class Article extends Message
 {
 
     /**
+     * @var array
+     */
+    private $article;
+
+    /**
      * @param string $title
      * @param string $description
      * @param string $url
@@ -14,7 +19,6 @@ class Article extends Message
     public function __construct($title = ' ', $description = ' ', $url = ' ', $picurl = ' ')
     {
         $this->type = 'news';
-        $this->articles[] = [];
         $this->title($title);
         $this->description($description);
         $this->url($url);
@@ -28,7 +32,7 @@ class Article extends Message
      */
     public function title($title)
     {
-        $this->articles[0]['title'] = $title;
+        $this->article['title'] = $title;
         return $this;
     }
 
@@ -39,7 +43,7 @@ class Article extends Message
      */
     public function description($description)
     {
-        $this->articles[0]['description'] = $description;
+        $this->article['description'] = $description;
         return $this;
     }
 
@@ -50,7 +54,7 @@ class Article extends Message
      */
     public function url($url)
     {
-        $this->articles[0]['url'] = $url;
+        $this->article['url'] = $url;
         return $this;
     }
 
@@ -61,7 +65,7 @@ class Article extends Message
      */
     public function picurl($picurl)
     {
-        $this->articles[0]['picurl'] = $picurl;
+        $this->article['picurl'] = $picurl;
         return $this;
     }
 
@@ -70,8 +74,18 @@ class Article extends Message
      *
      * @return array
      */
-    public function getArticles()
+    public function getArticle()
     {
-        return $this->articles;
+        return $this->article;
+    }
+
+    public function toArray()
+    {
+        return [
+            'msgtype' => $this->type,
+            $this->type => [
+                'articles' => [$this->article]
+            ],
+        ];
     }
 }
