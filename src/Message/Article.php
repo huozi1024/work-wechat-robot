@@ -14,7 +14,7 @@ class Article extends Message
     public function __construct($title = ' ', $description = ' ', $url = ' ', $picurl = ' ')
     {
         $this->type = 'news';
-        $this->articles[] = [];
+        $this->articles = [];
         $this->title($title);
         $this->description($description);
         $this->url($url);
