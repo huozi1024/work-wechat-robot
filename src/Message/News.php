@@ -11,7 +11,10 @@ class News extends Message
     public function __construct($articles = [])
     {
         $this->type = 'news';
-        $this->articles = $articles;
+
+        foreach ($articles as $article) {
+            $this->article($article);
+        }
     }
 
     /**
@@ -21,8 +24,8 @@ class News extends Message
      */
     public function article($article)
     {
-        $articles = $article instanceof Article ? $article->getArticles() : [$article];
-        $this->articles = array_merge($this->articles ?? [], $articles);
+        $article = $article instanceof Article ? $article->getArticle() : $article;
+        $this->articles = array_merge($this->articles ?? [], [$article]);
         return $this;
     }
 }
