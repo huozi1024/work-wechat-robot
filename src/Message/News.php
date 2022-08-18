@@ -25,7 +25,7 @@ class News extends Message
     public function article($article)
     {
         $article = $article instanceof Article ? $article->getArticle() : $article;
-        $this->articles = array_merge($this->articles ?? [], [$article]);
+        $this->articles = \array_merge($this->articles ?? [], [$article]);
         return $this;
     }
 }

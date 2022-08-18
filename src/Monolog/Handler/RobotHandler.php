@@ -44,8 +44,8 @@ class RobotHandler extends \Monolog\Handler\AbstractProcessingHandler
      */
     protected function textMsg(array $record)
     {
-        if (strlen($record['formatted']) > 5120) {
-            $record['formatted'] = substr($record['formatted'], 0, 5117) . '...';
+        if (\strlen($record['formatted']) > 5120) {
+            $record['formatted'] = \substr($record['formatted'], 0, 5117) . '...';
         }
         $this->robot->text($record['formatted']);
     }

@@ -47,7 +47,7 @@ class TemplateCard extends Message
      */
     public function mainTitle($title, $desc = '')
     {
-        $this->main_title = compact('title', 'desc');
+        $this->main_title = \compact('title', 'desc');
         return $this;
     }
 
@@ -59,7 +59,7 @@ class TemplateCard extends Message
      */
     public function emphasisContent($title, $desc)
     {
-        $this->emphasis_content = compact('title', 'desc');
+        $this->emphasis_content = \compact('title', 'desc');
         return $this;
     }
 
@@ -71,7 +71,7 @@ class TemplateCard extends Message
      */
     public function cardImage($url, $aspect_ratio = null)
     {
-        $this->card_type == static::TYPE_IMAGE AND $this->card_image = compact('url', 'aspect_ratio');
+        $this->card_type == static::TYPE_IMAGE AND $this->card_image = \compact('url', 'aspect_ratio');
         return $this;
     }
 
@@ -83,7 +83,7 @@ class TemplateCard extends Message
      */
     public function verticalContent($title, $desc = '')
     {
-        $this->message['vertical_content_list'][] = compact('title', 'desc');
+        $this->message['vertical_content_list'][] = \compact('title', 'desc');
         return $this;
     }
 
@@ -108,15 +108,15 @@ class TemplateCard extends Message
      */
     public function cardAction(...$args)
     {
-        $type = array_shift($args);
+        $type = \array_shift($args);
         if ($type == static::CARD_ACTION_URL) {
             list($url) = $args;
-            $this->card_action = compact('type', 'url');
+            $this->card_action = \compact('type', 'url');
         } elseif ($type == static::CARD_ACTION_APP) {
             list($appid, $pagepath) = $args;
-            $this->card_action = compact('type', 'appid', 'pagepath');
+            $this->card_action = \compact('type', 'appid', 'pagepath');
         } else {
-            throw new \InvalidArgumentException(sprintf('type mast be %d or %d', static::CARD_ACTION_URL, static::CARD_ACTION_APP));
+            throw new \InvalidArgumentException(\sprintf('type mast be %d or %d', static::CARD_ACTION_URL, static::CARD_ACTION_APP));
         }
         return $this;
     }
@@ -129,7 +129,7 @@ class TemplateCard extends Message
      */
     public function source($icon_url, $desc = '')
     {
-        $this->source = compact('icon_url', 'desc');
+        $this->source = \compact('icon_url', 'desc');
         return $this;
     }
 
@@ -158,14 +158,14 @@ class TemplateCard extends Message
         $type = array_shift($args);
         if ($type == static::HORIZONTAL_CONTENT_URL) {
             list($keyname, $value, $url) = $args;
-            $this->message['horizontal_content_list'][] = compact('type', 'keyname', 'value', 'url');
+            $this->message['horizontal_content_list'][] = \compact('type', 'keyname', 'value', 'url');
         } elseif ($type == static::HORIZONTAL_CONTENT_MEDIA) {
             list($keyname, $value, $media_id) = $args;
-            $this->message['horizontal_content_list'][] = compact('type', 'keyname', 'value', 'media_id');
+            $this->message['horizontal_content_list'][] = \compact('type', 'keyname', 'value', 'media_id');
         } else {
             $type = static::HORIZONTAL_CONTENT_TEXT;
             list($keyname, $value) = $args;
-            $this->message['horizontal_content_list'][] = compact('type', 'keyname', 'value');
+            $this->message['horizontal_content_list'][] = \compact('type', 'keyname', 'value');
         }
         return $this;
     }
@@ -192,17 +192,17 @@ class TemplateCard extends Message
      */
     public function jump(...$args)
     {
-        $type = array_shift($args);
+        $type = \array_shift($args);
         if ($type == static::JUMP_URL) {
             list($title, $url) = $args;
-            $this->message['jump_list'][] = compact('type', 'title', 'url');
+            $this->message['jump_list'][] = \compact('type', 'title', 'url');
         } elseif ($type == static::JUMP_APP) {
             list($title, $appid, $pagepath) = $args;
-            $this->message['jump_list'][] = compact('type', 'title', 'appid', 'pagepath');
+            $this->message['jump_list'][] = \compact('type', 'title', 'appid', 'pagepath');
         } else {
             $type = static::JUMP_NORMAL;
             list($title) = $args;
-            $this->message['jump_list'][] = compact('type', 'title');
+            $this->message['jump_list'][] = \compact('type', 'title');
         }
         return $this;
     }

@@ -30,8 +30,8 @@ class Text extends Message
      */
     public function mention($mentions)
     {
-        $mentions = is_array($mentions) ? $mentions : [$mentions];
-        $this->mentioned_list = array_merge($this->mentioned_list ?? [], $mentions);
+        $mentions = \is_array($mentions) ? $mentions : [$mentions];
+        $this->mentioned_list = \array_merge($this->mentioned_list ?? [], $mentions);
         return $this;
     }
 
@@ -40,8 +40,8 @@ class Text extends Message
      */
     public function mentionMobile($mobiles)
     {
-        $mobiles = is_array($mobiles) ? $mobiles : [$mobiles];
-        $this->mentioned_mobile_list = array_merge($this->mentioned_mobile_list ?? [], $mobiles);
+        $mobiles = \is_array($mobiles) ? $mobiles : [$mobiles];
+        $this->mentioned_mobile_list = \array_merge($this->mentioned_mobile_list ?? [], $mobiles);
         return $this;
     }
 }

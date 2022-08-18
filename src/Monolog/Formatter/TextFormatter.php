@@ -31,7 +31,7 @@ class TextFormatter extends \Monolog\Formatter\NormalizerFormatter
         return preg_replace_callback('/\{([\w\.]+)\}/', function ($match) use ($record) {
             $replase = arr_get($record, $match[1], '');
             $replase = $match[1] == 'datetime' ? $replase->format($this->dateFormat) : $replase;
-            return (is_object($replase) || is_array($replase)) ? json_encode($replase, JSON_UNESCAPED_UNICODE) : $replase;
+            return (\is_object($replase) || \is_array($replase)) ? \json_encode($replase, JSON_UNESCAPED_UNICODE) : $replase;
         }, $this->messageFormat);
     }
 
