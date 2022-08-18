@@ -20,12 +20,12 @@ class TemplateCard extends Message
     const JUMP_APP = 2;
 
     /**
-     * @param string $cardType text_notice | news_notice
+     * @param array $message
      */
-    public function __construct($cardType = self::TYPE_TEXT)
+    public function __construct($message = [])
     {
         $this->type = 'template_card';
-        $this->cardType($cardType);
+        $this->message = $message;
     }
 
     /**
