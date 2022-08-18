@@ -2,12 +2,12 @@
 
 namespace Huozi\WorkWechat\Message;
 
-class Markdown extends Text
+class Markdown extends Message
 {
 
     public function __construct($content = '')
     {
-        parent::content(addslashes($content));
         $this->type = 'markdown';
+        $this->content = \addslashes($content);
     }
 }
