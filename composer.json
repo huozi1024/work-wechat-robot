@@ -6,8 +6,8 @@
 	"homepage" : "https://github.com/huozi1024/work-wechat-robot",
 	"license" : "MIT",
 	"require" : {
-        "php": ">=8.1",
-		"monolog/monolog" : "^2.0|^3.0",
+        "php": ">=8.0",
+		"monolog/monolog" : "^2.0",
 		"guzzlehttp/guzzle": "^7.0"
 	},
 	"require-dev": {
