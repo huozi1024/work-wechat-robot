@@ -3,11 +3,13 @@
 企业微信机器人sdk
 
 ### 0.安装
->composer require huo-zi/work-wechat-robot
-
+```
+composer require huo-zi/work-wechat-robot
+```
 php < 8 || laravel < 9
->composer require huo-zi/work-wechat-robot:~2.0
-
+```
+composer require huo-zi/work-wechat-robot:~2.0
+```
 
 ### 1.使用
 #### 1.1 直接使用
